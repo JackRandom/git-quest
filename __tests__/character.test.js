@@ -9,6 +9,9 @@ describe('character', () => {
       health: 10,
       maxHealth: 10,
       dialogue: 'hello',
+      level: 1,
+      baseAttack: 0,
+      baseDefense: 0,
     };
     character = new Character(config);
   });
@@ -27,6 +30,15 @@ describe('character', () => {
     });
     it('has dialogue', () => {
       expect(character.dialogue).toBe(config.dialogue);
+    });
+    it('has level', () => {
+      expect(character.level).toBe(1);
+    });
+    it('has baseAttack', () => {
+      expect(character.baseAttack).toBe(0);
+    });
+    it('has baseDefense', () => {
+      expect(character.baseDefense).toBe(0);
     });
   });
   describe('speak', () => {
@@ -68,6 +80,24 @@ describe('character', () => {
       const potion = 100;
       character._heal(potion);
       expect(character.health).toBe(10);
+    });
+  });
+  describe('attackTotal', () => {
+    it('checks the characaters total attack level', () => {
+
+     character.baseAttack = 2;
+     character.level = 5;
+    
+      expect(character.attackTotal).toBe(7);
+    });
+  });
+  describe('defenseTotal', () => {
+    it('checks the characaters total defense level', () => {
+
+     character.baseDefense = 1;
+     character.level = 8;
+    
+      expect(character.defenseTotal).toBe(9);
     });
   });
 });
