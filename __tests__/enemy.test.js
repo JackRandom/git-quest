@@ -19,7 +19,7 @@ describe('enemy', () => {
       health: 10,
       maxHealth: 10,
       dialogue: 'rattle',
-      damage: 2,
+      // damage: 2,
     };
     enemy = new Enemy(config);
   });
@@ -33,17 +33,17 @@ describe('enemy', () => {
       expect(enemy.maxHealth).toBe(config.maxHealth);
       expect(enemy.dialogue).toBe(config.dialogue);
     });
-    it('has a damage rating', () => {
-      expect(enemy.damage).toBe(config.damage);
-    });
+    // it('has a damage rating', () => {
+    //   expect(enemy.damage).toBe(config.damage);
+    // });
   });
   describe('attack', () => {
     it('can attack a target', () => {
       enemy.attack(victim);
-      expect(victim.health).toBe(victim.maxHealth - enemy.damage);
+      expect(victim.health).toBe(9);
     });
     it('can describe its attack', () => {
-      const attackLine = `${enemy.name} lets out a ${enemy.dialogue}, and hits ${victim.name} for ${config.damage} damage!`;
+      const attackLine = `${enemy.name} lets out a ${enemy.dialogue}, and hits ${victim.name} for ${1} damage!`;
       expect(enemy.attack(victim)).toBe(attackLine);
     });
   });
